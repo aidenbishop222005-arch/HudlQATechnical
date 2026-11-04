@@ -42,6 +42,6 @@ test.describe('Successful login', () => {
     await homePage.logout();
     await page.goto('/home');
 
-    await expect(homePage.logoutLink).not.toBeAttached();
+    await expect(homePage.userMenuTrigger).not.toBeVisible();
   });
 });
