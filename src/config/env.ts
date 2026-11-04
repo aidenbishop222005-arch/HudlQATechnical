@@ -16,6 +16,6 @@ export const credentials = {
         return requireEnv('HUDL_EMAIL')
     },
     get password(): string {
-        return requireEnv('HUDL_EMAIL')
+      return requireEnv('HUDL_PASSWORD')
     }, 
 };
