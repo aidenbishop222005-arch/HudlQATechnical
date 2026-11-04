@@ -9,7 +9,7 @@ export class LoginPasswordPage {
   readonly togglePasswordButton: Locator;
   readonly forgotPasswordLink: Locator;
   readonly continueButton: Locator;
-  // TODO: add errorMessage locator once we've seen the real error markup
+  readonly passwordError: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -20,6 +20,7 @@ export class LoginPasswordPage {
     this.togglePasswordButton = page.getByTestId('toggle-password-visibility');
     this.forgotPasswordLink = page.getByTestId('forgot-password');
     this.continueButton = page.getByRole('button', { name: 'Continue', exact: true });
+    this.passwordError = page.getByTestId('password-input-help-text');
   }
 
   async waitForLoaded(): Promise<void> {

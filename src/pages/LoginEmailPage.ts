@@ -10,6 +10,7 @@ export class LoginEmailPage {
   readonly googleButton: Locator;
   readonly facebookButton: Locator;
   readonly appleButton: Locator;
+  readonly emailError: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -21,6 +22,7 @@ export class LoginEmailPage {
     this.googleButton = page.getByRole('button', { name: 'Continue with Google' });
     this.facebookButton = page.getByRole('button', { name: 'Continue with Facebook' });
     this.appleButton = page.getByRole('button', { name: 'Continue with Apple' });
+    this.emailError = page.getByTestId('email-input-help-text');
   }
 
   async goto(): Promise<void> {
