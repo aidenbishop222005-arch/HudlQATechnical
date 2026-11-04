@@ -18,8 +18,12 @@ export class HomePage {
     await expect(this.logoutLink).toBeAttached();
   }
 
+  async openUserMenu(): Promise<void> {
+    await this.userMenuTrigger.hover();
+  }
+
   async logout(): Promise<void> {
-    await this.userMenuTrigger.click();
+    await this.openUserMenu();
     await this.logoutLink.click();
   }
 }
