@@ -1,8 +1,6 @@
-import { test, expect } from '@playwright/test';
-import { LoginEmailPage } from '../src/pages/LoginEmailPage';
+import { test, expect } from '../src/fixtures/test';
 
-test('login page shows the email step', async ({ page }) => {
-  const loginEmailPage = new LoginEmailPage(page);
+test('login page shows the email step', async ({ loginEmailPage }) => {
   await loginEmailPage.goto();
 
   await expect(loginEmailPage.emailInput).toBeVisible();
