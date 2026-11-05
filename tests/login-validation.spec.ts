@@ -5,6 +5,7 @@ import {
   INVALID_EMAILS,
   WRONG_PASSWORD,
   uniqueUnregisteredEmail,
+  SQL_INJECTION_PASSWORD,
 } from '../src/data/testData';
 
 test.describe('Email validation', () => {
@@ -63,5 +64,12 @@ test.describe('Invalid credentials', { tag: '@lockout-risk' }, () => {
     await login(uniqueUnregisteredEmail(), WRONG_PASSWORD);
 
     await expect(loginPasswordPage.passwordError).toHaveText(ERROR_MESSAGES.invalidCredentials);
+  });
+
+  test('a SQL injection string does not bypass the password', { tag: '@security' }, async ({ login, loginPasswordPage, page }) => {
+    await login(credentials.email, SQL_INJECTION_PASSWORD);
+
+    await expect(loginPasswordPage.passwordError).toHaveText(ERROR_MESSAGES.invalidCredentials);
+    await expect(page).not.toHaveURL(/hudl\.com\/home/);
   });
 });
