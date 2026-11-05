@@ -7,7 +7,9 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 2 : undefined,
-  reporter: [['list'], ['html', { open: 'never' }]],
+  reporter: process.env.CI
+    ? [['github'], ['list']]
+    : [['list'], ['html', { open: 'never' }]],
 
   use: {
     baseURL: process.env.BASE_URL ?? 'https://www.hudl.com',

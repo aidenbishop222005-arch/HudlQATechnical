@@ -41,6 +41,8 @@ test.describe('Password validation', () => {
 });
 
 test.describe('Invalid credentials', { tag: '@lockout-risk' }, () => {
+  test.describe.configure({ retries: 0 });
+
   test.skip(
     ({ browserName }) => browserName !== 'chromium',
     'Failed logins run on one browser only to avoid locking the test account',
