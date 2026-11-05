@@ -105,10 +105,12 @@ All three run in CI before any browser tests.
 │       ├── ResetPasswordPage.ts      # Forgot password screen
 │       └── SignupBirthdayPage.ts     # First screen of account creation
 ├── tests/
+│   ├── accessibility.spec.ts         # Accessibility testing of ui
 │   ├── login-ui.spec.ts              # Page content and sign-up link
 │   ├── login-validation.spec.ts      # Input validation and invalid credentials
 │   ├── login-success.spec.ts         # Successful login, keyboard use, logout
-│   └── login-navigation.spec.ts      # Password step behaviour and links
+│   ├── login-navigation.spec.ts      # Password step behaviour and links
+│   └── security.spec.ts              # Input testing and axe security testing
 ├── .env.example                      # Template for local credentials
 ├── eslint.config.mjs
 ├── playwright.config.ts
