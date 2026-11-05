@@ -1,7 +1,5 @@
 # Hudl Login – Test Automation Framework
 
-[![CI](https://github.com/aidenbishop222005-arch/HudlQATechnical/actions/workflows/playwright.yml/badge.svg)](https://github.com/Yaidenbishop222005-arch/HudlQATechnical/actions/workflows/playwright.yml)
-
 An end-to-end test suite for the [Hudl login flow](https://www.hudl.com/login), built with Playwright and TypeScript. It covers the happy path, input validation, invalid credentials, the password step, and navigation to related screens, across Chromium, Firefox, and WebKit.
 
 ## Tech stack
@@ -22,7 +20,7 @@ An end-to-end test suite for the [Hudl login flow](https://www.hudl.com/login), 
 **1. Clone the repository and install dependencies**
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/hudl-login-tests.git
+git clone https://github.com/aidenbishop222005-arch/HudlQATechnical.git
 cd hudl-login-tests
 npm ci
 ```
@@ -128,6 +126,8 @@ All three run in CI before any browser tests.
 | **Invalid credentials** | Wrong password is rejected and the user stays logged out; an unregistered email produces the **same** error as a wrong password                                                            |
 | **Password step**       | Submitted email is shown read-only; show/hide password toggle changes the input type and `aria-pressed` state; "Edit" returns to the email step                                            |
 | **Navigation**          | "Forgot password?" opens the reset page; "Create Account" opens the sign-up flow                                                                                                           |
+| **Accessibility** | axe-core WCAG 2.1 A/AA scans of the email step, email step with an error, and password step; every image has an `alt` attribute (empty `alt` is allowed for decorative images); `lang` is declared; one main heading; Tab order from email to Continue; validation errors are announced with their field |
+| **Security** | HTML/script injection in the email and password fields is neither rendered nor executed (three payload types); a SQL injection string does not log in; the password never appears in the URL; HTTPS with HSTS; protection against embedding (clickjacking) |
 
 ### Out of scope
 
@@ -166,6 +166,10 @@ Expected error messages and invalid inputs live in `src/data/testData.ts`, so co
 The suite relies on Playwright's auto-waiting actions and web-first assertions. There are no fixed waits. The one increased timeout (the post-login redirect to the home page) is applied to that single assertion, with a reason, rather than globally.
 
 ## Security
+
+### Scope of security testing
+
+Security tests are deliberately non-intrusive, because they run against Hudl's production site. They use a small, fixed set of harmless payloads that only set a flag inside the test's own browser, and they use generated `example.com` addresses wherever the real account isn't needed. Automated scanners and high-volume fuzzing were intentionally not used against production.
 
 ### Credentials
 
