@@ -1,6 +1,6 @@
 # Hudl Login – Test Automation Framework
 
-[![CI](https://github.com/aidenbishop222005-arch/hudl-login-tests/actions/workflows/playwright.yml/badge.svg)](https://github.com/YOUR-USERNAME/hudl-login-tests/actions/workflows/playwright.yml)
+[![CI](https://github.com/aidenbishop222005-arch/HudlQATechnical/actions/workflows/playwright.yml/badge.svg)](https://github.com/YOUR-USERNAME/hudl-login-tests/actions/workflows/playwright.yml)
 
 An end-to-end test suite for the [Hudl login flow](https://www.hudl.com/login), built with Playwright and TypeScript. It covers the happy path, input validation, invalid credentials, the password step, and navigation to related screens, across Chromium, Firefox, and WebKit.
 
