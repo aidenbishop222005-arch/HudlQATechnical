@@ -58,13 +58,13 @@ HUDL_PASSWORD='your-password'
 
 ## Running the tests
 
-| Command | What it does |
-|---|---|
-| `npm test` | Runs the full suite in Chromium, Firefox, and WebKit |
-| `npm run test:smoke` | Runs only the critical `@smoke` tests |
-| `npm run test:chromium` | Runs the full suite in Chromium only |
+| Command                   | What it does                                                                                                                 |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `npm test`                | Runs the full suite in Chromium, Firefox, and WebKit                                                                         |
+| `npm run test:smoke`      | Runs only the critical `@smoke` tests                                                                                        |
+| `npm run test:chromium`   | Runs the full suite in Chromium only                                                                                         |
 | `npm run test:no-lockout` | Runs everything except tests that make failed login attempts (see [Account lockout protection](#account-lockout-protection)) |
-| `npm run test:ui` | Opens Playwright's interactive UI mode for running and debugging tests |
+| `npm run test:ui`         | Opens Playwright's interactive UI mode for running and debugging tests                                                       |
 
 Useful options (add after `npx playwright test`):
 
@@ -84,10 +84,10 @@ This opens the HTML report from the last local run. Failed tests include a scree
 
 ## Code quality
 
-| Command | What it does |
-|---|---|
-| `npm run typecheck` | Type-checks the project with the TypeScript compiler |
-| `npm run lint` | Runs ESLint (`npm run lint:fix` to auto-fix) |
+| Command                | What it does                                              |
+| ---------------------- | --------------------------------------------------------- |
+| `npm run typecheck`    | Type-checks the project with the TypeScript compiler      |
+| `npm run lint`         | Runs ESLint (`npm run lint:fix` to auto-fix)              |
 | `npm run format:check` | Checks formatting with Prettier (`npm run format` to fix) |
 
 All three run in CI before any browser tests.
@@ -119,15 +119,15 @@ All three run in CI before any browser tests.
 
 ## Test coverage
 
-| Area | Scenarios |
-|---|---|
-| **Page UI** | Logo and heading render; email field is empty with an enabled Continue button; Google, Facebook, and Apple sign-in options are shown |
-| **Successful login** | Valid credentials reach the home page and the user menu shows the correct account; both steps can be submitted with the Enter key; email is case-insensitive; logging out ends the session |
-| **Email validation** | Empty email is rejected; malformed emails are rejected (data-driven over several formats) |
-| **Password validation** | Empty password is rejected |
-| **Invalid credentials** | Wrong password is rejected and the user stays logged out; an unregistered email produces the **same** error as a wrong password |
-| **Password step** | Submitted email is shown read-only; show/hide password toggle changes the input type and `aria-pressed` state; "Edit" returns to the email step |
-| **Navigation** | "Forgot password?" opens the reset page; "Create Account" opens the sign-up flow |
+| Area                    | Scenarios                                                                                                                                                                                  |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Page UI**             | Logo and heading render; email field is empty with an enabled Continue button; Google, Facebook, and Apple sign-in options are shown                                                       |
+| **Successful login**    | Valid credentials reach the home page and the user menu shows the correct account; both steps can be submitted with the Enter key; email is case-insensitive; logging out ends the session |
+| **Email validation**    | Empty email is rejected; malformed emails are rejected (data-driven over several formats)                                                                                                  |
+| **Password validation** | Empty password is rejected                                                                                                                                                                 |
+| **Invalid credentials** | Wrong password is rejected and the user stays logged out; an unregistered email produces the **same** error as a wrong password                                                            |
+| **Password step**       | Submitted email is shown read-only; show/hide password toggle changes the input type and `aria-pressed` state; "Edit" returns to the email step                                            |
+| **Navigation**          | "Forgot password?" opens the reset page; "Create Account" opens the sign-up flow                                                                                                           |
 
 ### Out of scope
 
@@ -138,7 +138,7 @@ All three run in CI before any browser tests.
 
 ### Page Object Model
 
-Each screen has a class in `src/pages` that owns its locators and user actions. Tests describe *what* should happen; page objects know *how* to do it. If Hudl changes the UI, the fix is made once in the page object rather than in every test.
+Each screen has a class in `src/pages` that owns its locators and user actions. Tests describe _what_ should happen; page objects know _how_ to do it. If Hudl changes the UI, the fix is made once in the page object rather than in every test.
 
 Page objects contain no test verdicts. The only assertions inside them are readiness checks (for example, waiting for the password field after submitting an email) so tests start from a known state.
 
