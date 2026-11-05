@@ -1,7 +1,7 @@
 export const ERROR_MESSAGES = {
   emailRequired: 'Please enter your email address',
   emailInvalid: 'Enter a valid email.',
-  invalidCredentials: 'Your email or password is incorrect. Try again.',
+  invalidCredentials: 'Incorrect username or password.',
 } as const;
 
 export const INVALID_EMAILS = ['abc', 'abc@', '@hudl.com', 'abc@@hudl.com'] as const;
