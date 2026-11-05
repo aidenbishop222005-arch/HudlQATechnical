@@ -4,6 +4,7 @@ import { LoginPasswordPage } from '../pages/LoginPasswordPage';
 import { ResetPasswordPage } from '../pages/ResetPasswordPage';
 import { SignupBirthdayPage } from '../pages/SignupBirthdayPage';
 import { HomePage } from '../pages/HomePage';
+import AxeBuilder from '@axe-core/playwright';
 
 type LoginFixtures = {
   loginEmailPage: LoginEmailPage;
@@ -12,6 +13,8 @@ type LoginFixtures = {
   signupBirthdayPage: SignupBirthdayPage;
   homePage: HomePage;
   login: (email: string, password: string) => Promise<void>;
+  makeAxeBuilder: () => AxeBuilder;
+  dialogs: string[];
 };
 
 export const test = base.extend<LoginFixtures>({
@@ -37,6 +40,19 @@ export const test = base.extend<LoginFixtures>({
       await loginPasswordPage.waitForLoaded();
       await loginPasswordPage.submitPassword(password);
     });
+  },
+  makeAxeBuilder: async ({ page }, use) => {
+    await use(() =>
+      new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']),
+    );
+  },
+  dialogs: async ({ page }, use) => {
+    const messages: string[] = [];
+    page.on('dialog', (dialog) => {
+      messages.push(dialog.message());
+      void dialog.dismiss();
+    });
+    await use(messages);
   },
 });
 

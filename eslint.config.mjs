@@ -21,6 +21,10 @@ export default defineConfig(
     },
     rules: {
       '@typescript-eslint/no-floating-promises': 'error',
+      'playwright/expect-expect': [
+        'warn',
+        { assertFunctionNames: ['expectNoA11yViolations', 'expectNoInjectedScript'] },
+      ],
     },
   },
 
