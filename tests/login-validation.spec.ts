@@ -46,7 +46,11 @@ test.describe('Invalid credentials', { tag: '@lockout-risk' }, () => {
     'Failed logins run on one browser only to avoid locking the test account',
   );
 
-  test('rejects a wrong password for a registered account', async ({ login, loginPasswordPage, page }) => {
+  test('rejects a wrong password for a registered account', async ({
+    login,
+    loginPasswordPage,
+    page,
+  }) => {
     await login(credentials.email, WRONG_PASSWORD);
 
     await expect(loginPasswordPage.passwordError).toHaveText(ERROR_MESSAGES.invalidCredentials);

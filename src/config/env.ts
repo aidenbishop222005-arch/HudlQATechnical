@@ -1,4 +1,4 @@
-import 'dotenv/config'
+import 'dotenv/config';
 
 function requireEnv(name: string): string {
   const value = process.env[name];
@@ -12,10 +12,10 @@ function requireEnv(name: string): string {
 }
 
 export const credentials = {
-    get email(): string{
-        return requireEnv('HUDL_EMAIL')
-    },
-    get password(): string {
-      return requireEnv('HUDL_PASSWORD')
-    }, 
+  get email(): string {
+    return requireEnv('HUDL_EMAIL');
+  },
+  get password(): string {
+    return requireEnv('HUDL_PASSWORD');
+  },
 };

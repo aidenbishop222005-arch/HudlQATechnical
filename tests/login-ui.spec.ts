@@ -22,7 +22,10 @@ test.describe('Login page UI', { tag: '@smoke' }, () => {
     await expect(loginEmailPage.appleButton).toBeVisible();
   });
 
-  test('Create Account link opens the sign-up flow', async ({ loginEmailPage, signupBirthdayPage }) => {
+  test('Create Account link opens the sign-up flow', async ({
+    loginEmailPage,
+    signupBirthdayPage,
+  }) => {
     await loginEmailPage.createAccountLink.click();
     await signupBirthdayPage.waitForLoaded();
     await expect(signupBirthdayPage.birthMonthSelect).toBeVisible();

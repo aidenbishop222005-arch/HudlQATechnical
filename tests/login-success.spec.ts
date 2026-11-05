@@ -17,7 +17,11 @@ test.describe('Successful login', () => {
     });
   });
 
-  test('submits both steps with the Enter key', async ({ loginEmailPage, loginPasswordPage, homePage }) => {
+  test('submits both steps with the Enter key', async ({
+    loginEmailPage,
+    loginPasswordPage,
+    homePage,
+  }) => {
     await loginEmailPage.goto();
     await loginEmailPage.emailInput.fill(credentials.email);
     await loginEmailPage.emailInput.press('Enter');

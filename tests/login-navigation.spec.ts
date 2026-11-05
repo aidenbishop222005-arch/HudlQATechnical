@@ -38,7 +38,10 @@ test.describe('Password step', () => {
     await expect(loginEmailPage.emailInput).toBeEditable();
   });
 
-  test('Forgot password link opens the reset page', async ({ loginPasswordPage, resetPasswordPage }) => {
+  test('Forgot password link opens the reset page', async ({
+    loginPasswordPage,
+    resetPasswordPage,
+  }) => {
     await loginPasswordPage.forgotPasswordLink.click();
 
     await resetPasswordPage.waitForLoaded();
