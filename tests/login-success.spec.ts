@@ -31,12 +31,14 @@ test.describe('Successful login', () => {
     await loginPasswordPage.passwordInput.press('Enter');
 
     await homePage.waitForLoaded();
+    await expect(homePage.userMenuTrigger).toBeVisible();
   });
 
   test('treats the email as case-insensitive', async ({ login, homePage }) => {
     await login(credentials.email.toUpperCase(), credentials.password);
 
     await homePage.waitForLoaded();
+    await expect(homePage.userMenuTrigger).toBeVisible();
   });
 
   test('logging out ends the session', async ({ login, homePage, page }) => {
@@ -46,6 +48,6 @@ test.describe('Successful login', () => {
     await homePage.logout();
     await page.goto('/home');
 
-    await expect(homePage.userMenuTrigger).not.toBeVisible();
+    await expect(homePage.userMenuTrigger).toBeHidden();
   });
 });
